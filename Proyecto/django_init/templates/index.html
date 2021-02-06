@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block titulo %}Lista de Contactos {% endblock titulo %}</title>
+  </head>
+
+  <body>
+    {% block cuerpo %}
+    <h1>Template de listado</h1>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Correo</th>
+            <th>OPCION</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for persona in object_list %}
+            <tr>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellido}}</td>
+                <td>{{persona.correo}}</td>
+                <td><a href="{% url 'editar_persona' persona.id %}">Editar</a> <a href="{% url 'eliminar_persona' persona.id %}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button><a href="{% url 'crear_persona' %}">CREAR</a></button>
+<footer>
+  todos los derechos reservados &copy; 2021 Alberto Gabriel Guaman Garcia JAJAJAJA
+</footer>
+    {% endblock cuerpo %}
+  </body>
+</html>
